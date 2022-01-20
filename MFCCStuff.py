@@ -9,7 +9,7 @@ class MFCCStuff:
 
     def __init__(self, wav_filename):
         (self.rate, self.sig) = wav.read(wav_filename)
-        mfcc_features = mfcc(self.sig, self.rate,
+        mfcc_features = mfcc(self.sig, self.rate, nfft=2048,
                              numcep=MFCCStuff.order)
         self.mfcc = np.array(mfcc_features)  # don't transpose
         self.adjust_matrix()

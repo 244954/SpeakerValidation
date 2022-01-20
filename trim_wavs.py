@@ -2,6 +2,19 @@ from pydub import AudioSegment
 import os
 
 
+def trim(file_sufix):
+    # fileneme in current dir
+    filename = 'voice_{}.wav'.format(file_sufix)
+    _sound = AudioSegment.from_wav(file=filename)
+
+    _start_trim = detect_leading_silence(_sound)
+    _end_trim = detect_leading_silence(_sound.reverse())
+
+    _duration = len(_sound)
+    _trimmed_sound = _sound[_start_trim:_duration - _end_trim]
+    _trimmed_sound.export(filename, format="wav")
+
+
 def detect_leading_silence(sound, silence_threshold=-85.0, chunk_size=10):
     '''
     sound is a pydub.AudioSegment

@@ -1,5 +1,6 @@
 from SVMStuff import *
 from record import record
+from trim_wavs import trim
 
 
 def generate_SVM():
@@ -70,5 +71,6 @@ def test(SVM, verbose=False):
 if __name__ == '__main__':
     SVM = generate_SVM()
     record("Test1", directory='')
+    trim("Test1")
     test(SVM, verbose=True)
 

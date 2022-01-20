@@ -3,6 +3,7 @@ import time
 from threading import Thread
 from verify_speaker import test, generate_SVM
 from record import record
+from trim_wavs import trim
 
 
 def classify(result, thread1: Thread, thread2: Thread):
@@ -24,6 +25,7 @@ def classify(result, thread1: Thread, thread2: Thread):
 
 def record_voice():
     record("Test1")
+    trim("Test1")
 
 
 def bar_action(bar, text, result):
